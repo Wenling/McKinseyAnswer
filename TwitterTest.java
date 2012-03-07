@@ -33,6 +33,7 @@ public class TwitterTest {
 	public static void searchRecentTweets(String hashtag) {
 		try {
 			int pageNum = 1;
+			int count = 1;
 			List<Entry> result = new LinkedList<Entry>();
 			outer : while(true) {
 				String queryURL = apiURL + "?q=%23" + hashtag
@@ -46,14 +47,18 @@ public class TwitterTest {
 				for(int i = 0; i < nList.getLength(); ++i) {
 					Node n = nList.item(i);
 					Entry e = new Entry();
-					e.id = i + 1;
+					e.id = count;
 					e.url = n.getTextContent();
 					if(!result.contains(e)) {
 						result.add(e);
+						++count;
 					}
 					if(result.size() == 100) {
 						break outer;
 					}
+				}
+				if(nList.getLength() < 100) {
+					break;				
 				}
 				++pageNum;
 			}
@@ -82,3 +87,4 @@ public class TwitterTest {
 	}
 
 }
+
