@@ -1,0 +1,8 @@
+1. Compile:
+   javac SortArrayByFreq.java
+   javac TwitterTest.java
+2. Run:
+   java SortArrayByFreq
+   java TwitterTest arg[0] /* arg[0] should be formatted as '#words'
+3. Additional:
+   If you want to change the elements in the array, please do that in main. The file does not accept arguments as the array.
